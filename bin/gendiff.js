@@ -6,6 +6,7 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 // eslint-disable-next-line import/extensions
 import { Command } from 'commander/esm.mjs';
+import parse from '../src/parsers.js';
 
 const program = new Command();
 
@@ -14,7 +15,8 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => {
   const data = fs.readFileSync(getFixturePath(filename), 'utf-8');
-  return JSON.parse(data);
+  const format = path.extname(data);
+  return parse(data, format);
 };
 
 const compare = (data1, data2) => {
