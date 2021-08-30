@@ -1,12 +1,21 @@
 import yaml from 'js-yaml';
 
-const parser = (data, format) => {
-  if (format === '') {
+/* const parsers = {
+  '.yaml': yaml.safeLoad,
+  '.json': JSON.parse,
+};
+
+const parse = (data, format) => parsers[format](data);
+export default parse; */
+
+const parse = (data, format) => {
+  if (format === '.json') {
     return JSON.parse(data);
   }
   if (format === '.yml') {
-      return yaml.load(data);
+    return yaml.load(data);
   }
 };
 
-export default parser;
+export default parse;
+ 
