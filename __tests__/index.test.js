@@ -15,7 +15,7 @@ test('genDiff', (file1, file2) => {
   const data1 = readFile(file1);
   const data2 = readFile(file2);
   const result = [
-    '   - follow: false',
+    '  - follow: false',
     '    host: hexlet.io',
     '  - proxy: 123.234.53.22',
     '  - timeout: 50',
