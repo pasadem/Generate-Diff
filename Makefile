@@ -1,9 +1,6 @@
 gendiff:
 	node bin/gendiff.js
 
-install: 
-	install-deps
-
 run:
 	bin/nodejs-package.js 10
 
