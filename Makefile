@@ -4,8 +4,8 @@ gendiff:
 run:
 	bin/nodejs-package.js 10
 
-install-deps:
-	npm ci
+install:
+	npm install
 
 test:
 	npm test
