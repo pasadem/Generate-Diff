@@ -1,7 +1,7 @@
 import yaml from 'js-yaml';
 
 const parsers = {
-  '.yaml': yaml.safeLoad,
+  '.yaml': yaml.load,
   '.json': JSON.parse,
 };
 

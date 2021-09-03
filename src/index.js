@@ -2,6 +2,7 @@ import fs from 'fs';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import compare from './compare.js';
+import stylish from './stylish.js';
 // import parse from './parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,7 @@ const readFile = (filename) => {
 const genDiff = (file1, file2) => {
   const data1 = readFile(file1);
   const data2 = readFile(file2);
-  return compare(data1, data2);
+  const result = compare(data1, data2);
+  return stylish(result);
 };
 export default genDiff;

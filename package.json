@@ -10,11 +10,6 @@
   "scripts": {
     "test": "npx jest --bail"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "transform": {},
-    "testRunner": "jest-circus/runner"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pasadem/frontend-project-lvl2.git"
