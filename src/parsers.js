@@ -10,9 +10,9 @@ export default parse; */
 
 const parse = (data, format) => {
   switch (format) {
-    case '.json':
+    case 'json':
       return JSON.parse(data);
-    case '.yaml':
+    case 'yaml':
       return yaml.load(data);
     default:
       return new Error(`Wrong input format: '${format}'`);
