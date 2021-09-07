@@ -7,9 +7,9 @@ const stringify = (value, depth) => {
   }
   const result = Object.keys(value).map((key) => {
     const childValue = value[key];
-    return `${getIndent(depth)}  ${key}: ${stringify(childValue, depth + 1)}\n`;
+    return `${getIndent(depth)}  ${key}: ${stringify(childValue, depth + 1)}`;
   });
-  return `{\n${result.join('\n')}${getIndent(depth - 1)}  }`;
+  return `{\n${result.join('\n')}\n${getIndent(depth - 1)}  }`;
 };
 const stylish = (tree) => {
   const result = tree.map((node) => {
@@ -35,8 +35,5 @@ const stylish = (tree) => {
   });
   return `{\n${result.join('\n')}\n}`;
 };
-/* const stylish = (tree) => {
-  const result = tree.map((child) => formatter(child));
-  return `${result.join('\n')}`;
-}; */
+
 export default stylish;

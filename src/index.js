@@ -1,22 +1,21 @@
 import fs from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 import compare from './compare.js';
-import stylish from './stylish.js';
+import formatter from './formatters/index.js';
 import parse from './parsers.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const getFilePath = (filename) => path.resolve(filename);
 const readFile = (filename) => {
-  const data = fs.readFileSync(filename, 'utf-8');
-  const format = path.extname(data);
-  return JSON.parse(data);
+  const filepath = getFilePath(filename);
+  const data = fs.readFileSync(filepath, 'utf-8');
+  const format = path.extname(filepath);
+  return parse(data, format);
 };
 
-const genDiff = (file1, file2) => {
-  const data1 = readFile(file1);
-  const data2 = readFile(file2);
+const genDiff = (filepath1, filepath2, format) => {
+  const data1 = readFile(filepath1);
+  const data2 = readFile(filepath2);
   const result = compare(data1, data2);
-  return stylish(result);
+  return formatter(result, format);
 };
 export default genDiff;
