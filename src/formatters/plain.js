@@ -13,7 +13,7 @@ const plain = (tree) => {
         children, status, newValue, oldValue, key,
       } = item;
       if (status === 'next') {
-        return `${children.map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
+        return `${children.filter((child) => child.status !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
       }
       if (status === 'added') {
         return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
@@ -24,7 +24,6 @@ const plain = (tree) => {
       if (status === 'changed') {
         return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
       }
-      return '';
     };
     return iter(node, '');
   });

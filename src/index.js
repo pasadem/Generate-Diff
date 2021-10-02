@@ -4,7 +4,7 @@ import compare from './compare.js';
 import formatter from './formatters/index.js';
 import parse from './parsers.js';
 
-const getFilePath = (filename) => path.resolve(filename);
+const getFilePath = (filename) => path.resolve(process.cwd(), filename);
 const readFile = (filename) => {
   const filepath = getFilePath(filename);
   const data = fs.readFileSync(filepath, 'utf-8');
