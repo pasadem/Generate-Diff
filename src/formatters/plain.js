@@ -21,9 +21,7 @@ const plain = (tree) => {
       if (status === 'removed') {
         return `Property '${newkey}${key}' was removed`;
       }
-      if (status === 'changed') {
-        return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
-      }
+      return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
     };
     return iter(node, '');
   });
