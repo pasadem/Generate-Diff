@@ -11,3 +11,4 @@ $ make install
 $ gendiff file1 file2
 
 [![asciicast](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI.svg)](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI)
+[![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
