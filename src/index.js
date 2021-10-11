@@ -12,7 +12,7 @@ const readFile = (filename) => {
   return parse(data, format);
 };
 
-const genDiff = (filepath1, filepath2, format) => {
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const data1 = readFile(filepath1);
   const data2 = readFile(filepath2);
   const result = compare(data1, data2);
