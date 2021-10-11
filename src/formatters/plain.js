@@ -10,15 +10,15 @@ const plain = (tree) => {
   const result = tree.map((node) => {
     const iter = (item, newkey) => {
       const {
-        children, status, newValue, oldValue, key,
+        children, type, newValue, oldValue, key,
       } = item;
-      if (status === 'next') {
-        return `${children.filter((child) => child.status !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
+      if (type === 'next') {
+        return `${children.filter((child) => child.type !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
       }
-      if (status === 'added') {
+      if (type === 'added') {
         return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
       }
-      if (status === 'removed') {
+      if (type === 'removed') {
         return `Property '${newkey}${key}' was removed`;
       }
       return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;

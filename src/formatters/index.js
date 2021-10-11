@@ -3,12 +3,15 @@ import plain from './plain.js';
 import json from './json.js';
 
 const formatter = (data, format) => {
-  if (format === 'json') {
-    return json(data);
+  switch (format) {
+    case 'json':
+      return json(data);
+    case 'plain':
+      return plain(data);
+    case 'stylish':
+      return stylish(data);
+    default:
+      return new Error(`Wrong input format: '${format}'`);
   }
-  if (format === 'plain') {
-    return plain(data);
-  }
-  return stylish(data);
 };
 export default formatter;

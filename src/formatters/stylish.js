@@ -15,18 +15,18 @@ const stylish = (tree) => {
   const result = tree.map((node) => {
     const iter = (item, depth = 1) => {
       const {
-        children, status, newValue, oldValue, key,
+        children, type, newValue, oldValue, key,
       } = item;
-      if (status === 'next') {
+      if (type === 'next') {
         return `${getIndent(depth)}  ${key}: {\n${children.map((child) => iter(child, depth + 1)).join('\n')}\n${getIndent(depth)}  }`;
       }
-      if (status === 'added') {
+      if (type === 'added') {
         return `${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
       }
-      if (status === 'removed') {
+      if (type === 'removed') {
         return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}`;
       }
-      if (status === 'changed') {
+      if (type === 'changed') {
         return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}\n${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
       }
       return `${getIndent(depth)}  ${key}: ${stringify(oldValue, depth + 1)}`;
