@@ -4,11 +4,15 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/pasadem/frontend-project-lvl2/test_coverage)
 ### Setup
 
-$ make install
+```sh
+make install
+```
 
 ### Start programm
 
-$ gendiff file1 file2
+```sh
+gendiff
+```
 
 [![asciicast](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI.svg)](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI)
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
