@@ -2,8 +2,8 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 
-const formatter = (data, format) => {
-  switch (format) {
+const format = (data, extension) => {
+  switch (extension) {
     case 'json':
       return json(data);
     case 'plain':
@@ -11,7 +11,7 @@ const formatter = (data, format) => {
     case 'stylish':
       return stylish(data);
     default:
-      return new Error(`Wrong input format: '${format}'`);
+      return new Error(`Wrong input format: '${extension}'`);
   }
 };
-export default formatter;
+export default format;

@@ -12,7 +12,7 @@ const plain = (tree) => {
       const {
         children, type, newValue, oldValue, key,
       } = item;
-      if (type === 'next') {
+      if (type === 'nested') {
         return `${children.filter((child) => child.type !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
       }
       if (type === 'added') {

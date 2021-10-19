@@ -17,7 +17,7 @@ const stylish = (tree) => {
       const {
         children, type, newValue, oldValue, key,
       } = item;
-      if (type === 'next') {
+      if (type === 'nested') {
         return `${getIndent(depth)}  ${key}: {\n${children.map((child) => iter(child, depth + 1)).join('\n')}\n${getIndent(depth)}  }`;
       }
       if (type === 'added') {

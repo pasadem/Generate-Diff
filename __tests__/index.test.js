@@ -9,23 +9,29 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.resolve(__dirname, '..', '__fixtures__', filename);
 const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('stylish.json', () => {
-  const filepath1 = getFixturePath('tree1.json');
-  const filepath2 = getFixturePath('tree2.json');
-  const expected = readFixture('stylish.txt');
-  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expected);
+const expectedStylish = readFixture('stylish.txt');
+const expectedPlain = readFixture('plain.txt');
+const expectedJson = readFixture('simple.txt');
+
+const formats = ['json', 'yaml'];
+/* const format = (extensions) => extensions.map((item) => [
+  getFixturePath(`tree1.${item}`),
+  getFixturePath(`tree2.${item}`),
+]); */
+
+test.each(formats)('stylish.json', (format) => {
+  const filepath1 = getFixturePath(`tree1.${format}`);
+  const filepath2 = getFixturePath(`tree2.${format}`);
+  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylish);
+  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlain);
+  // expect(genDiff(filepath1, filepath2, 'json')).toEqual(expectedJson);
 });
-test('plain.json', () => {
-  const filepath1 = getFixturePath('tree1.json');
-  const filepath2 = getFixturePath('tree2.json');
-  const expected = readFixture('plain.txt');
-  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expected);
-});
-test('stylish.yaml', () => {
+
+/* test('stylish.yaml', () => {
   const filepath1 = getFixturePath('tree1.yaml');
   const filepath2 = getFixturePath('tree2.yaml');
-  const expected = readFixture('stylish.txt');
-  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expected);
+
+  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylish);
 });
 test('plain.yaml', () => {
   const filepath1 = getFixturePath('tree1.yaml');
@@ -33,3 +39,4 @@ test('plain.yaml', () => {
   const expected = readFixture('plain.txt');
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expected);
 });
+ */

@@ -7,7 +7,7 @@ const buildTree = (data1, data2) => {
     const value2 = data2[key];
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return {
-        type: 'next',
+        type: 'nested',
         children: buildTree(value1, value2),
         key,
       };
@@ -24,7 +24,7 @@ const buildTree = (data1, data2) => {
         oldValue: value1,
         key,
       };
-    } if (_.has(data1, key) && _.has(data2, key) && value1 !== value2) {
+    } if (value1 !== value2) {
       return {
         type: 'changed',
         oldValue: value1,
