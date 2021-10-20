@@ -14,29 +14,12 @@ const expectedPlain = readFixture('plain.txt');
 const expectedJson = readFixture('simple.txt');
 
 const formats = ['json', 'yaml'];
-/* const format = (extensions) => extensions.map((item) => [
-  getFixturePath(`tree1.${item}`),
-  getFixturePath(`tree2.${item}`),
-]); */
+
 
 test.each(formats)('stylish.json', (format) => {
   const filepath1 = getFixturePath(`tree1.${format}`);
   const filepath2 = getFixturePath(`tree2.${format}`);
   expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylish);
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlain);
-  // expect(genDiff(filepath1, filepath2, 'json')).toEqual(expectedJson);
 });
 
-/* test('stylish.yaml', () => {
-  const filepath1 = getFixturePath('tree1.yaml');
-  const filepath2 = getFixturePath('tree2.yaml');
-
-  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylish);
-});
-test('plain.yaml', () => {
-  const filepath1 = getFixturePath('tree1.yaml');
-  const filepath2 = getFixturePath('tree2.yaml');
-  const expected = readFixture('plain.txt');
-  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expected);
-});
- */
