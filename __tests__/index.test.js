@@ -11,12 +11,13 @@ const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf
 
 const expectedStylish = readFixture('stylish.txt');
 const expectedPlain = readFixture('plain.txt');
-
+const expectedJson = readFixture('json.txt');
 const formats = ['json', 'yaml'];
 
-test.each(formats)('stylish.json', (format) => {
+test.each(formats)('gendiff %s', (format) => {
   const filepath1 = getFixturePath(`tree1.${format}`);
   const filepath2 = getFixturePath(`tree2.${format}`);
   expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylish);
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlain);
+  expect(genDiff(filepath1, filepath2, 'json')).toEqual(expectedJson);
 });

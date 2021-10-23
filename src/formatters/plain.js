@@ -12,16 +12,18 @@ const plain = (tree) => {
       const {
         children, type, newValue, oldValue, key,
       } = item;
-      if (type === 'nested') {
-        return `${children.filter((child) => child.type !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
+      switch (type) {
+        case 'nested':
+          return `${children.filter((child) => child.type !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
+        case 'added':
+          return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
+        case 'removed':
+          return `Property '${newkey}${key}' was removed`;
+        case 'changed':
+          return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
+        default:
+          throw new Error(`unexpected type ${type}`);
       }
-      if (type === 'added') {
-        return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
-      }
-      if (type === 'removed') {
-        return `Property '${newkey}${key}' was removed`;
-      }
-      return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
     };
     return iter(node, '');
   });
