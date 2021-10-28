@@ -4,11 +4,11 @@ import compare from './treeBuilder.js';
 import format from './formatters/index.js';
 import parse from './parsers.js';
 
-const buildFullPath = (filename) => path.resolve(process.cwd(), filename);
-const getData = (filename) => {
-  const filepath = buildFullPath(filename);
-  const data = fs.readFileSync(filepath, 'utf-8');
-  const extension = path.extname(filepath).slice(1);
+const buildFullPath = (filepath) => path.resolve(process.cwd(), filepath);
+const getData = (filepath) => {
+  const absoluteFilepath = buildFullPath(filepath);
+  const data = fs.readFileSync(absoluteFilepath, 'utf-8');
+  const extension = path.extname(absoluteFilepath).slice(1);
   return parse(data, extension);
 };
 

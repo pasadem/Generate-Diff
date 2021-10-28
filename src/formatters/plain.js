@@ -6,28 +6,29 @@ const stringify = (value) => {
   }
   return _.isString(value) ? `'${value}'` : value;
 };
-const plain = (tree) => {
+const iter = (tree, newkey) => {
   const result = tree.map((node) => {
-    const iter = (item, newkey) => {
-      const {
-        children, type, newValue, oldValue, key,
-      } = item;
-      switch (type) {
-        case 'nested':
-          return `${children.filter((child) => child.type !== 'unchanged').map((child) => iter(child, `${newkey}${key}.`)).join('\n')}`;
-        case 'added':
-          return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
-        case 'removed':
-          return `Property '${newkey}${key}' was removed`;
-        case 'changed':
-          return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
-        default:
-          throw new Error(`unexpected type ${type}`);
-      }
-    };
-    return iter(node, '');
+    const {
+      children, type, newValue, oldValue, key,
+    } = node;
+    switch (type) {
+      case 'nested':
+        return `${iter(children.filter((child) => child.type !== 'unchanged'), `${newkey}${key}.`)}`;
+      case 'added':
+        return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
+      case 'removed':
+        return `Property '${newkey}${key}' was removed`;
+      case 'changed':
+        return `Property '${newkey}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
+      default:
+        throw new Error(`unexpected type ${type}`);
+    }
   });
-  return `${result.join('\n')}`;
+  return result.join('\n');
+};
+const randomPlain = (tree) => {
+  const result = iter(tree, '');
+  return `${result}`;
 };
 
-export default plain;
+export default randomPlain;

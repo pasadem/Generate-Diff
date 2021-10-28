@@ -1,2 +1,2 @@
-const json = (data) => JSON.stringify(data);
-export default json;
+const randomJson = (data) => JSON.stringify(data);
+export default randomJson;
