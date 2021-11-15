@@ -26,10 +26,10 @@ $ gendiff plane format
   
 [![asciicast](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd.svg)](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd)
   
-$ gendiff json format filepath1.(json/yml) filepath2.(json/yml)
+$ gendiff json format 
   
 [![asciicast](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn.svg)](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn)
   
-$ gendiff stylish format filepath1.(json/yml) filepath2.(json/yml)
+$ gendiff stylish format 
   
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
