@@ -8,11 +8,21 @@
 make install
 ```
 
-### Start programm
-
+## Run "gendiff <filepath1> <filepath2>"
+You can use formats: *json*, *plain*, *stylish = (default)*;
 ```sh
-gendiff
+$ gendiff filepath1.(json/yml) filepath2.(json/yml)
+$ gendiff -f <format> filepath1.(json/yml) filepath2.(json/yml)
 ```
+
+## Run tests
+```sh
+$ make test
+$ make test-coverage
+```
+
+## Examples:
+
 
 [![asciicast](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI.svg)](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI)
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
