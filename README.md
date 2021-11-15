@@ -22,7 +22,14 @@ $ make test-coverage
 ```
 
 ## Examples:
-
-
-[![asciicast](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI.svg)](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI)
+$ gendiff plane format
+  
+[![asciicast](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd.svg)](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd)
+  
+$ gendiff json format 
+  
+[![asciicast](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn.svg)](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn)
+  
+$ gendiff stylish format 
+  
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
