@@ -22,7 +22,6 @@ $ make test-coverage
 ```
 
 ## Examples:
-
-
-[![asciicast](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI.svg)](https://asciinema.org/a/sQaHlzbxokWyvEBytNsOiQqwI)
+$ gendiff filepath1.(json/yml) filepath2.(json/yml)
+[![asciicast](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd.svg)](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd)
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
