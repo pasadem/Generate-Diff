@@ -1,15 +1,15 @@
-import randomStylish from './stylish.js';
-import randomJson from './json.js';
-import randomPlain from './plain.js';
+import renderStylish from './stylish.js';
+import renderJson from './json.js';
+import renderPlain from './plain.js';
 
 const format = (data, extension) => {
   switch (extension) {
     case 'json':
-      return randomJson(data);
+      return renderJson(data);
     case 'plain':
-      return randomPlain(data);
+      return renderPlain(data);
     case 'stylish':
-      return randomStylish(data);
+      return renderStylish(data);
     default:
       return new Error(`Wrong input format: '${extension}'`);
   }

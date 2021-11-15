@@ -11,9 +11,10 @@ const iter = (tree, newkey) => {
     const {
       children, type, newValue, oldValue, key,
     } = node;
+    const filteredChildren = (children) => children.filter((child) => child.type !== 'unchanged');
     switch (type) {
       case 'nested':
-        return `${iter(children.filter((child) => child.type !== 'unchanged'), `${newkey}${key}.`)}`;
+        return `${iter(filteredChildren(children), `${newkey}${key}.`)}`;
       case 'added':
         return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
       case 'removed':
@@ -26,9 +27,9 @@ const iter = (tree, newkey) => {
   });
   return result.join('\n');
 };
-const randomPlain = (tree) => {
+const renderPlain = (tree) => {
   const result = iter(tree, '');
   return `${result}`;
 };
 
-export default randomPlain;
+export default renderPlain;

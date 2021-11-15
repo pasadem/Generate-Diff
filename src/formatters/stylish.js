@@ -3,7 +3,7 @@ import _ from 'lodash';
 const getIndent = (depth, count = 4) => ' '.repeat(depth * count - 2);
 const stringify = (value, depth) => {
   if (!_.isPlainObject(value)) {
-    return `${value}`;
+    return `${String(value)}`;
   }
   const result = Object.keys(value).map((key) => {
     const childValue = value[key];
@@ -34,9 +34,9 @@ const iter = (tree, depth = 1) => {
   return result.join('\n');
 };
 
-const randomStylish = (tree) => {
+const renderStylish = (tree) => {
   const result = iter(tree, 1);
   return `{\n${result}\n}`;
 };
 
-export default randomStylish;
+export default renderStylish;
