@@ -7,9 +7,9 @@ const stringify = (value, depth) => {
   }
   const result = Object.keys(value).map((key) => {
     const childValue = value[key];
-    return `${getIndent(depth)}  ${key}: ${stringify(childValue, depth + 1)}`;
+    return `${getIndent(depth + 1)}  ${key}: ${stringify(childValue, depth + 1)}`;
   });
-  return `{\n${result.join('\n')}\n${getIndent(depth - 1)}  }`;
+  return `{\n${result.join('\n')}\n${getIndent(depth)}  }`;
 };
 const iter = (tree, depth = 1) => {
   const result = tree.map((node) => {
@@ -20,13 +20,13 @@ const iter = (tree, depth = 1) => {
       case 'nested':
         return `${getIndent(depth)}  ${key}: {\n${iter(children, depth + 1)}\n${getIndent(depth)}  }`;
       case 'added':
-        return `${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
+        return `${getIndent(depth)}+ ${key}: ${stringify(newValue, depth)}`;
       case 'removed':
-        return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}`;
+        return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth)}`;
       case 'changed':
-        return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}\n${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
+        return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth)}\n${getIndent(depth)}+ ${key}: ${stringify(newValue, depth)}`;
       case 'unchanged':
-        return `${getIndent(depth)}  ${key}: ${stringify(oldValue, depth + 1)}`;
+        return `${getIndent(depth)}  ${key}: ${stringify(oldValue, depth)}`;
       default:
         throw new Error(`unexpected type ${type}`);
     }
