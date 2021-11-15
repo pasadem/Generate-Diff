@@ -11,7 +11,7 @@ const iter = (tree, newkey) => {
     const {
       children, type, newValue, oldValue, key,
     } = node;
-    const filteredChildren = (children) => children.filter((child) => child.type !== 'unchanged');
+    const filteredChildren = (items) => items.filter((item) => item.type !== 'unchanged');
     switch (type) {
       case 'nested':
         return `${iter(filteredChildren(children), `${newkey}${key}.`)}`;
