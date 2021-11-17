@@ -5,7 +5,7 @@
 ### Setup
 
 ```sh
-make install
+npm install pasadem/gendiff
 ```
 
 ## Run "gendiff <filepath1> <filepath2>"
@@ -22,14 +22,21 @@ $ make test-coverage
 ```
 
 ## Examples:
-$ gendiff plane format
+  
+```sh  
+ $ gendiff plane format
+```
   
 [![asciicast](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd.svg)](https://asciinema.org/a/FdQxK5zI4F8lYscVguuH313rd)
   
+```sh 
 $ gendiff json format 
+```
   
 [![asciicast](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn.svg)](https://asciinema.org/a/1qLMPg2Vj9djTEoDd5wb56rfn)
   
-$ gendiff stylish format 
+```sh  
+$ gendiff stylish format
+```
   
 [![asciicast](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o.svg)](https://asciinema.org/a/93cawTixM9Jd1jn8qpVgwFC6o)
