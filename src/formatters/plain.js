@@ -7,14 +7,14 @@ const stringify = (value) => {
   return _.isString(value) ? `'${value}'` : value;
 };
 const iter = (tree, newkey) => {
-  const result = tree.map((node) => {
+  const filteredChildren = tree.filter((child) => child.type !== 'unchanged');
+  const result = filteredChildren.map((node) => {
     const {
       children, type, newValue, oldValue, key,
     } = node;
-    const filteredChildren = (items) => items.filter((item) => item.type !== 'unchanged');
     switch (type) {
       case 'nested':
-        return `${iter(filteredChildren(children), `${newkey}${key}.`)}`;
+        return `${iter(children, `${newkey}${key}.`)}`;
       case 'added':
         return `Property '${newkey}${key}' was added with value: ${stringify(newValue)}`;
       case 'removed':
